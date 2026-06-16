@@ -44,7 +44,7 @@ export const searchPatients = async (req: AuthRequest, res: Response) => {
 
         let nextCursor: string | null = null;
         if (patients.length > pageSize) {
-            nextCursor = patients[pageSize]._id.toString();
+            nextCursor = patients[pageSize - 1]._id.toString();
             patients.splice(pageSize, 1);
         }
 
@@ -94,7 +94,7 @@ export const getTodaysPatients = async (req: AuthRequest, res: Response) => {
 
         let nextCursor: string | null = null;
         if (patients.length > pageSize) {
-            nextCursor = patients[pageSize]._id.toString();
+            nextCursor = patients[pageSize - 1]._id.toString();
             patients.splice(pageSize, 1);
         }
 

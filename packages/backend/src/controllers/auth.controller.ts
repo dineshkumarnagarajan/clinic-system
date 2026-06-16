@@ -39,6 +39,7 @@ export const loginStaff = async (req: AuthRequest, res: Response) => {
         const { email, password } = req.body;
 
         const staff = await Staff.findOne({ email }).select('+password');
+        console.log('staff', staff)
         if (!staff) {
             return res.status(401).json({ error: 'Invalid credentials' });
         }

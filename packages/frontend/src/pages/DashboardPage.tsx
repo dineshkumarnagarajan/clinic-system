@@ -65,10 +65,9 @@ export default function DashboardPage() {
         initialPageParam: 0,
         staleTime: 5 * 60 * 1000, // 5 minutes
     });
-    console.log("data", data)
-    const patients: any = data?.pages[0] ?? [];
-    console.log("patients", patients)
-    const safePatients: any = patients;
+    const safePatients: any = data
+        ? data.pages.flatMap((page: any) => page.patients || [])
+        : [];
     const handleLogout = () => {
         logout();
         navigate('/login');
